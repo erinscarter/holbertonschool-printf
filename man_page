@@ -1,0 +1,86 @@
+_printf(3)                                                Linux Programmer's Manual                                               _printf(3)
+
+NAME
+       _printf - formatted output conversion
+
+SYNOPSIS
+       #include <stdio.h>
+
+       int _printf(const char *format, ...);
+
+DESCRIPTION
+       The _printf() function prints formatted output to the standard output (stdout) stream. It converts, formats, and writes the arguments under control
+       of the format string specified by the parameter format.
+
+RETURN VALUE
+       Upon successful completion, the function returns the number of characters printed (excluding the null byte used to end output to strings). On
+       error, a negative value is returned.
+
+FORMAT SPECIFIERS
+       The format string consists of zero or more directives. A directive consists of the character %, followed by one or more format specifiers:
+
+       %c     Single character output.
+
+       %d     Signed decimal integer.
+
+       %u     Unsigned decimal integer.
+
+       %f     Decimal floating point.
+
+       %s     String of characters.
+
+       %p     Pointer address.
+
+       %%     A single % character.
+
+       The format specifiers can be followed by optional flags and field width:
+
+       -      Left-justify within the field width.
+
+       +      Forces to precede the result with a plus or minus sign.
+
+       0      Left-pads the number with zeroes instead of spaces.
+
+       #      For o, x, or X conversions, the value is preceded with 0, 0x, or 0X respectively.
+
+       Field Width:
+              An optional decimal digit string specifying a minimum field width. If the converted value has fewer characters than the field width, it is
+              padded with spaces (or zeros, if the 0 flag is specified) to the left (or right if the - flag is specified).
+
+       For a detailed description of format specifiers and flags, refer to the "printf" section of the C library documentation.
+
+EXAMPLES
+       The following example demonstrates the usage of _printf() function:
+
+           #include <stdio.h>
+
+           int main() {
+               int number = 42;
+               double pi = 3.14159;
+               char letter = 'A';
+               char name[] = "John Doe";
+
+               _printf("Number: %d\n", number);
+               _printf("Pi: %f\n", pi);
+               _printf("Letter: %c\n", letter);
+               _printf("Name: %s\n", name);
+
+               return 0;
+           }
+
+SEE ALSO
+       printf(1), fprintf(3), sprintf(3), scanf(3)
+
+CONFORMING TO
+       C89, C99, POSIX.1-2001
+
+BUGS
+       The behavior of printf() is undefined if the format string does not match the conversion specifiers or if the arguments are of incompatible types.
+
+AUTHOR
+       This man page was written by Erin Carter 6109@holbertonstudents.com.
+
+COPYRIGHT
+       Copyright (C) 2023, Erin Carter. This is free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY
+       or FITNESS FOR A PARTICULAR PURPOSE.
+
